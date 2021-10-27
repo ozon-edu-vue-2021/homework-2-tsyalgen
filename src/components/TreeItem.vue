@@ -7,7 +7,7 @@
         {{ data.name }}
         <span v-if="isFolder">[{{ isOpen ? '-' : '+' }}]</span>
       </div>
-      <ul v-show="isOpen" v-if="isFolder">
+      <ul v-if="isOpen">
         <TreeItem
             v-for="(root, index) in data.contents"
             :key="index"
