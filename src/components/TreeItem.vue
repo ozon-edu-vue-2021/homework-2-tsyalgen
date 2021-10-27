@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li :class="{selected: isSelected}">
+    <li>
       <div
           :class="isFolder ? 'bold' : isLink ? 'link' : ''"
           @click="click">
@@ -30,8 +30,7 @@ export default {
   },
   data() {
     return {
-      isOpen: false,
-      isSelected: false
+      isOpen: false
     };
   },
   computed: {
@@ -47,7 +46,10 @@ export default {
       if (this.isFolder) {
         this.isOpen = !this.isOpen;
       } else {
-        this.isSelected = !this.isSelected
+        document.querySelectorAll('.selected').forEach(el =>{
+          el.classList.remove('selected')
+        })
+        this.$el.classList.add('selected')
       }
     }
   },
