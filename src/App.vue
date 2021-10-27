@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul class="items">
+      <TreeItem
+          :data="root"
+      ></TreeItem>
+    </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import * as data from '../public/static/node_modules.json'
+import TreeItem from "@/components/TreeItem";
 
 export default {
   name: 'App',
+  data() {
+    return {
+      root: {}
+    }
+  },
   components: {
-    HelloWorld
+    TreeItem
+  },
+  created() {
+    this.root = data.default
   }
 }
 </script>
@@ -21,8 +33,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.items {
+  list-style: none;
+  cursor: pointer;
 }
 </style>
